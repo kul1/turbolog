@@ -1,13 +1,14 @@
 # Turbolog
 
-Turbolog is devise, omniauth and facebook authentication setup in one gem.
+Turbolog is a gem to setup devise, omniauth and facebook authentication.
+
 For the following configuration:
+
 .Rails 5.1.4
 .Ruby 2.4.1
 .Devise
 .Mongoid
 .Omniauth_facebook
-
 
 ## Installation
 
@@ -41,6 +42,12 @@ It will run mongoid:config, devise install, devise Users and config omniauth and
 ## Usage
 
 Your rails app will have Log In/Log Out with Facebook authentication as a template for your modification.
+
+Other command:
+
+To remove devise line from config/routes by execute the following command
+
+    $ rake turbolog:clean
 
 ## Development
 
