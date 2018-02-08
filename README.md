@@ -1,8 +1,13 @@
 # Turbolog
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/turbolog`. To experiment with that code, run `bin/console` for an interactive prompt.
+Turbolog is devise, omniauth and facebook authentication setup in one gem.
+For the following configuration:
+.Rails 5.1.4
+.Ruby 2.4.1
+.Devise
+.Mongoid
+.Omniauth_facebook
 
-TODO: Delete this and the text above, and describe your gem
 
 ## Installation
 
@@ -20,9 +25,22 @@ Or install it yourself as:
 
     $ gem install turbolog
 
+Then execute :
+
+    $ rails g turbolog:install
+
+It will backup and include several gems 
+
+
+Then execute :
+
+    $ rails g turbolog:config
+
+It will run mongoid:config, devise install, devise Users and config omniauth and generate scaffold welcome to be an example 
+
 ## Usage
 
-TODO: Write usage instructions here
+Your rails app will have Log In/Log Out with Facebook authentication as a template for your modification.
 
 ## Development
 
