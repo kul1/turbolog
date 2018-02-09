@@ -22,7 +22,7 @@ module Turbolog
         run "rails generate devise User"
         #remove another devise from rails g devise User
         gsub_file 'config/routes.rb',/devise_for :users\n/,''
-        gsub_file 'config/routes.rb',/root.*\n/,'root to: \'welcomes#index\''
+        gsub_file 'config/routes.rb',/root.*/,'root to: \'welcomes#index\''
       end
       def get_welcome
         inject_into_file 'config/routes.rb', :after => 'Rails.application.routes.draw do' do
