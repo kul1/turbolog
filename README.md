@@ -26,22 +26,36 @@ Or install it yourself as:
 
     $ gem install turbolog
 
-Then execute :
+Once turbolog gem bundled, there are 3 steps to install.
+
+Step 1/3 execute :
 
     $ rails g turbolog:install
 
-It will backup and include several gems 
+It will backup and will include several gems 
+
+Step 2/3 bundle install
+
+    $ bundle install
 
 
-Then execute :
+Step 3/3 execute :
 
     $ rails g turbolog:config
 
-It will run mongoid:config, devise install, devise Users and config omniauth and generate scaffold welcome to be an example 
+It will run mongoid:config, devise install, devise Users and config omniauth and generate scaffold welcome as an example 
 
 ## Usage
 
 Your rails app will have Log In/Log Out with Facebook authentication as a template for your modification.
+
+Additional Setup For Facebook in .env
+for example
+FACEBOOK_API="xxxxxxxxxxxxxxxxx"
+FACEBOOK_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxx"  
+
+
+
 
 Other command:
 
