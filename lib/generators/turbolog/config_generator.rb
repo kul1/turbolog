@@ -9,6 +9,11 @@ module Turbolog
       def config_mongoid
         run "rails g mongoid:config"
       end
+
+      def create_welcome
+        run "rails g scaffold welcome greeting:text"
+      end
+
       desc "Configure Devise"
       def config_devise
         puts "rails g devise:install...............\n"
@@ -17,8 +22,13 @@ module Turbolog
         run "rails generate devise User"
         #remove another devise from rails g devise User
         gsub_file 'config/routes.rb',/devise_for :users\n/,''
+        gsub_file 'config/routes.rb',/root.*\n/,'root to: \'welcomes#index\''
       end
-
+      def get_welcome
+        inject_into_file 'config/routes.rb', :after => 'Rails.application.routes.draw do' do
+            "\n  get 'welcomes/index'\n"
+        end
+      end
 
       desc "Backup Files if previous installed"
       # def backup_files
