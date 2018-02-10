@@ -5,8 +5,12 @@ module Turbolog
       def self.source_root
         File.dirname(__FILE__) + "/templates"
       end
+      def self.blue(mytext) 
+         "\e[34m#{mytext}\e[0m".center(40)
+      end
 
       def setup_gems
+        puts InstallGenerator.blue(" ....................Insert Gems....................\n")
           gem 'devise'
           gem 'mongo', '~> 2.2'
           gem 'bson', '~> 4.0'
@@ -34,6 +38,7 @@ module Turbolog
       end
 
       def backup_files
+        puts InstallGenerator.blue(" ...................Backup Filess....................\n")
         inside("app/controllers") {(File.file? "Users/omniauth_callbacks_controller.rb") ? (run "mv omniauth_callbacks_controller.rb omniauth_callbacks_controller.rb.bak") : (puts "No omniauth_callbacks_controller.rb")}
         inside("config/initializers") {(File.file? "devise.rb") ? (run "mv devise.rb devise.rb.bak") : (puts "No devise.rb")}
         inside("app/models") {(File.file? "user.rb") ? (run "mv user.rb user.rb.bak") : (puts "No user.rb")}
@@ -42,22 +47,23 @@ module Turbolog
         directory "app"
       end
       def remove_devise
+        puts InstallGenerator.blue(" ..............Remove devise from routes.............\n")
         gsub_file 'config/routes.rb',/devise_for.*\n/,''
       end
       def create_welcome
+        puts InstallGenerator.blue(" ................Create Sample: Welcome..............\n")
         run "rails g scaffold welcome greeting:text"
       end
 
 
       def finish
         puts "\n"
-        puts "Backup existing configuration files.\n"
-        puts "Modify Gemfile with devise omniauth gems.\n"
-        puts "Please run the following command:\n"
-        puts "----------------------------------------\n"
-        puts "bundle install\n"
-        puts "rails generate turbolog:config\n"
-        puts "----------------------------------------\n"
+        puts InstallGenerator.blue(" ....................Finish Step 1/3..................\n")
+        puts "Next: Please run the following commands:\n"
+        puts InstallGenerator.blue("......................................................\n")
+        puts "$ bundle install\n"
+        puts "$ rails generate turbolog:config\n"
+        puts InstallGenerator.blue("......................................................\n")
       end
     end
   end
