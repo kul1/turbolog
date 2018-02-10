@@ -1,3 +1,4 @@
+require 'turbolog/helpers'
 module Turbolog
   module Generators
     class ConfigGenerator < Rails::Generators::Base
@@ -10,22 +11,22 @@ module Turbolog
       end
 
       desc "Config mongoid"
-        puts ConfigGenerator.blue(" .................run mongoid:config....................\n")
+        puts Color.blue(" .................run mongoid:config....................\n")
 
       def config_mongoid
         run "rails g mongoid:config"
       end
 
       def sethost_mongoid
-        puts ConfigGenerator.blue("..............change localhost to 127.0.0.1.............\n")
+        puts Color.blue("..............change localhost to 127.0.0.1.............\n")
         gsub_file 'config/mongoid.yml','localhost:27017','127.0.0.1:27017'
       end
 
       desc "Configure Devise"
       def config_devise
-        puts ConfigGenerator.blue("..................rails g devise:install................\n")
+        puts Color.blue("..................rails g devise:install................\n")
         run "rails generate devise:install"
-        puts ConfigGenerator.blue("....................rails g devise User.................\n")
+        puts Color.blue("....................rails g devise User.................\n")
         run "rails generate devise User"
         # remove another devise from rails g devise User
         gsub_file 'config/routes.rb',/devise_for :users\n/,''
@@ -33,14 +34,14 @@ module Turbolog
       end
 
       desc "Create Initial Controller"
-        puts ConfigGenerator.blue(".............Create Welcome Initial Controller..........\n")
+        puts Color.blue(".............Create Welcome Initial Controller..........\n")
       def create_welcome
         run "rails g scaffold welcome greeting:text"
       end
 
       def config_welcome
         # set root to Welcome
-        puts ConfigGenerator.blue("................Set root to:  welcomes#index ...........\n")
+        puts Color.blue("................Set root to:  welcomes#index ...........\n")
         gsub_file 'config/routes.rb',/root.*/,'root to: \'welcomes#index\''
         inject_into_file 'config/routes.rb', :after => 'Rails.application.routes.draw do' do
             "\n  get 'welcomes/index'\n"
@@ -49,25 +50,25 @@ module Turbolog
 
       desc "authenticate_user"
       def authenticate_user
-        puts ConfigGenerator.blue("..............Authenticate user in application..........\n")
+        puts Color.blue("..............Authenticate user in application..........\n")
         inject_into_file 'app/controllers/application_controller.rb', :after => 'class ApplicationController < ActionController::Base' do
           "\n  before_action :authenticate_user!\n"
         end
       end
       
       def setup_routes_users
-        puts ConfigGenerator.blue(".................Setup routes for Users.................\n")
+        puts Color.blue(".................Setup routes for Users.................\n")
         route "devise_for :users, :controllers => { :omniauth_callbacks => \"users/omniauth_callbacks\" }"
       end
 
 
       desc "Set up omniauth config"
       def setup_omniauth
-        puts ConfigGenerator.blue("...............config devise for facebook...............\n")
+        puts Color.blue("...............config devise for facebook...............\n")
         inject_into_file 'config/initializers/devise.rb', :after => 'Devise.setup do |config|' do
           "\n  config.omniauth :facebook, ENV['FACEBOOK_API'], ENV['FACEBOOK_SECRET']\n"
         end
-        puts ConfigGenerator.blue("..............config user model for facebook............\n")
+        puts Color.blue("..............config user model for facebook............\n")
         inject_into_file 'app/models/user.rb', :after => 'include Mongoid::Document' do
         "\n\n  include Mongoid::Attributes::Dynamic" +
           "\n  devise :omniauthable, :omniauth_providers => [:facebook]" +
@@ -79,7 +80,7 @@ module Turbolog
           "\n  end\n" 
         end
 
-        puts ConfigGenerator.blue("...........Add field [provider] to user model...........\n")
+        puts Color.blue("...........Add field [provider] to user model...........\n")
         inject_into_file 'app/models/user.rb', :after => '  field :encrypted_password, type: String, default: ""' do
           "\n  field :provider,           type: String, default: \"\"\n"
         end
@@ -87,7 +88,7 @@ module Turbolog
       end
 
       desc "Add Log In/Log Out View in application.html.erb"
-        puts ConfigGenerator.blue("......Add Log In/Log Out View in application.html.......\n")
+        puts Color.blue("......Add Log In/Log Out View in application.html.......\n")
 
       def log_in_out
         inject_into_file 'app/views/layouts/application.html.erb', :after => '<body>' do
@@ -104,9 +105,9 @@ module Turbolog
         
       def finish
         puts "\n"
-        puts ConfigGenerator.blue("........................................................\n")
-        puts ConfigGenerator.blue("....................Finished Step 3/3...................\n")
-        puts ConfigGenerator.blue("........................................................\n")
+        puts Color.blue("________________________________________________________\n")
+        puts Color.blue("                 Finished Step 3/3\n")
+        puts Color.blue("________________________________________________________\n")
       end
     end
   end

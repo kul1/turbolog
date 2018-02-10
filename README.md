@@ -45,17 +45,16 @@ Step 3/3 execute :
 
 It will run mongoid:config, devise install, devise Users and config omniauth and generate scaffold welcome as an example 
 
-## Usage
-
-Your rails app will have Log In/Log Out with Facebook authentication as a template for your modification.
-
 Additional Setup For Facebook in .env
 for example
 FACEBOOK_API="xxxxxxxxxxxxxxxxx"
 FACEBOOK_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxx"  
+## Usage
 
+1. Create new rails app
 
-
+    $ rails new sample -B -O -T
+2. Follow Installation 3 steps above
 
 Other command:
 

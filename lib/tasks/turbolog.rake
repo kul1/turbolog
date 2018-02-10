@@ -3,9 +3,7 @@ require 'turbolog'
 require 'thor'
 
 namespace :turbolog do
-  # def self.source_root
-  #   File.dirname(__FILE__) + "/templates"
-  # end
+
   class Hammer < Thor
     include Thor::Actions
   end
