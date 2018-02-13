@@ -32,6 +32,7 @@ module Turbolog
           gem 'guard-minitest'
           gem 'capybara'
           gem 'rb-fsevent'
+          gem 'simplecov'
         end
       end
 

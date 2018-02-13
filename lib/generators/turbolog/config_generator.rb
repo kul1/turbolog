@@ -28,9 +28,6 @@ module Turbolog
         run "rails generate devise:install"
         puts Color.blue("....................rails g devise User.................\n")
         run "rails generate devise User"
-        # remove another devise from rails g devise User
-        gsub_file 'config/routes.rb',/devise_for :users\n/,''
-
       end
 
       desc "Create Initial Controller"
@@ -39,13 +36,18 @@ module Turbolog
         run "rails g scaffold welcome greeting:text"
       end
 
-      def config_welcome
+      def config_root
         # set root to Welcome
-        puts Color.blue("................Set root to:  welcomes#index ...........\n")
-        gsub_file 'config/routes.rb',/root.*/,'root to: \'welcomes#index\''
-        inject_into_file 'config/routes.rb', :after => 'Rails.application.routes.draw do' do
-            "\n  get 'welcomes/index'\n"
-        end
+        puts Color.blue(".................config routes for user ................\n")
+        copy_file "routes.rb","config/routes.rb"
+      end
+
+      def dot_option
+        # set root to Welcome
+        puts Color.blue("......................config .rspec ....................\n")
+        copy_file ".rspec",".rspec"
+        copy_file ".env",".env"
+        copy_file ".gitignore",".gitignore" #protect .env
       end
 
       desc "authenticate_user"
@@ -56,12 +58,6 @@ module Turbolog
         end
       end
       
-      def setup_routes_users
-        puts Color.blue(".................Setup routes for Users.................\n")
-        route "devise_for :users, :controllers => { :omniauth_callbacks => \"users/omniauth_callbacks\" }"
-      end
-
-
       desc "Set up omniauth config"
       def setup_omniauth
         puts Color.blue("...............config devise for facebook...............\n")
@@ -102,7 +98,27 @@ module Turbolog
          "\n    <% end %>\n" 
          end
        end
-        
+
+      desc "Config default mail server in development and test"
+        puts Color.blue("......Add Log In/Log Out View in application.html.......\n")
+      def set_default_mailer
+        inject_into_file 'config/environments/development.rb', :after => 'ails.application.configure do' do
+         "\n  ## config default mail server \n" +
+         "  config.action_mailer.default_url_options = { host\: \"localhost\:3000\" }\n"
+         end
+         inject_into_file 'config/environments/test.rb', :after => 'ails.application.configure do' do
+         "\n  ## config default mail server \n" +
+         "  config.action_mailer.default_url_options = { host\: \"localhost\:3000\" }\n"
+         end 
+       end
+
+      desc "Add user spec"
+        puts Color.blue("......................Add Spec Data.....................\n")
+      def add_spec
+        directory "spec"
+        directory "lib"
+      end
+
       def finish
         puts "\n"
         puts Color.blue("________________________________________________________\n")
