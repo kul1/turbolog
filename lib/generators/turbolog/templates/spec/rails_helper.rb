@@ -13,7 +13,7 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
   # Setup capybara
-  #config.include Warden::Test::Helpers
+  config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Capybara::DSL
   # config.after :each do
   # 	Warden.test_reset!
