@@ -26,14 +26,18 @@ module Turbolog
       def config_devise
         puts Color.blue("..................rails g devise:install................\n")
         run "rails generate devise:install"
+        puts Color.blue(" ..............Remove devise from routes.............\n")
+        gsub_file 'config/routes.rb',/devise_for.*\n/,''
         puts Color.blue("....................rails g devise User.................\n")
         run "rails generate devise User"
       end
 
-      desc "Create Initial Controller"
+      desc "Create Initial Sample Controller"
         puts Color.blue(".............Create Welcome Initial Controller..........\n")
       def create_welcome
         run "rails g scaffold welcome greeting:text"
+        #copy_file "welcomes_controller_spec.rb","spec/controllers"
+        #copy_file "welcomes_spec.rb","spec/models"
       end
 
       def config_root

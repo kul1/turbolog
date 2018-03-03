@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :welcome do
-    greeting "MyText"
+    greeting "Initial Greeting from FactoryBot"
   end
 end

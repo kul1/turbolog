@@ -33,6 +33,8 @@ module Turbolog
           gem 'capybara'
           gem 'rb-fsevent'
           gem 'simplecov'
+          gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+          gem 'database_cleaner'
         end
       end
 

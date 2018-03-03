@@ -1,5 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe Welcome, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  context "Created authorize_user using FactoryBot" do
+  	before do
+      @user = FactoryBot.build(:authorize_user)
+      @user.save
+    end
+
+    it "Expected valid user created" do
+      expect(@user).to be_valid
+    end
+
+  end
+
 end
