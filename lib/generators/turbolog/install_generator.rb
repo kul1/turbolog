@@ -52,11 +52,6 @@ module Turbolog
         puts Color.blue(" ..............Remove devise from routes.............\n")
         gsub_file 'config/routes.rb',/devise_for.*\n/,''
       end
-      # def create_welcome
-      #   puts Color.blue(" ................Create Sample: Welcome..............\n")
-      #   run "rails g scaffold welcome greeting:text"
-      # end
-
 
       def finish
         puts "\n"
