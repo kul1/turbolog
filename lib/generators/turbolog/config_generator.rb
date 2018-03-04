@@ -30,6 +30,7 @@ module Turbolog
         gsub_file 'config/routes.rb',/devise_for.*\n/,''
         puts Color.blue("....................rails g devise User.................\n")
         run "rails generate devise User"
+        gsub_file 'config/initializers/devise.rb',/# config.secret_key/,'config.secret_key'
       end
 
       desc "Create Initial Sample Controller"

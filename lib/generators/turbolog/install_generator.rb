@@ -43,6 +43,7 @@ module Turbolog
         inside("app/controllers") {(File.file? "Users/omniauth_callbacks_controller.rb") ? (run "mv omniauth_callbacks_controller.rb omniauth_callbacks_controller.rb.bak") : (puts "No omniauth_callbacks_controller.rb")}
         inside("config/initializers") {(File.file? "devise.rb") ? (run "mv devise.rb devise.rb.bak") : (puts "No devise.rb")}
         inside("app/models") {(File.file? "user.rb") ? (run "mv user.rb user.rb.bak") : (puts "No user.rb")}
+        inside("app/helpers") {(File.file? "application_helper.rb") ? (run "mv application_helper.rb application_helper.rb.bak") : (puts "No application_helper.rb")}
         inside("app/views/layouts") {(File.file? "application.html.erb") ? (run "cp application.html.erb application.html.erb.bak") : (puts "No application.html.erb")}
         inside("config") {(File.file? "routes.rb") ? (run "cp routes.rb routes.rb.bak") : (puts "No routes.rb")}
         directory "app"
@@ -51,10 +52,10 @@ module Turbolog
         puts Color.blue(" ..............Remove devise from routes.............\n")
         gsub_file 'config/routes.rb',/devise_for.*\n/,''
       end
-      def create_welcome
-        puts Color.blue(" ................Create Sample: Welcome..............\n")
-        run "rails g scaffold welcome greeting:text"
-      end
+      # def create_welcome
+      #   puts Color.blue(" ................Create Sample: Welcome..............\n")
+      #   run "rails g scaffold welcome greeting:text"
+      # end
 
 
       def finish
