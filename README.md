@@ -4,8 +4,8 @@ Turbolog is a gem to setup devise, omniauth and facebook authentication.
 
 For the following configuration:
 
-.Rails 5.1.4
-.Ruby 2.4.1
+.Rails 5.1.4, 5.2.0.rc1
+.Ruby 2.4.1, 2.5.0
 .Devise
 .Mongoid
 .Omniauth_facebook
