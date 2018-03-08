@@ -84,6 +84,7 @@ module Turbolog
         puts Color.blue("...........Add field [provider] to user model...........\n")
         inject_into_file 'app/models/user.rb', :after => '  field :encrypted_password, type: String, default: ""' do
           "\n  field :provider,           type: String, default: \"\"\n"
+          "\n  field :admin,              type: Boolean, default: false \n"
         end
 
       end
@@ -121,6 +122,7 @@ module Turbolog
         puts Color.blue("......................Add Spec Data.....................\n")
       def add_spec
         directory "spec"
+        # Added sample calculator test
         directory "lib"
       end
 
