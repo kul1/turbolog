@@ -14,7 +14,7 @@ module Turbolog
           gem 'bson', '~> 4.0'
           gem 'mongoid', github: 'mongodb/mongoid'
           gem 'nokogiri' # use for jinda/doc
-          gem 'haml', git: 'https://github.com/haml/haml'
+          gem 'haml', '~> 5.0', '>= 5.0.4'
           gem 'haml-rails'
           gem 'bcrypt'
           gem 'omniauth-identity'

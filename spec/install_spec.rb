@@ -2,32 +2,76 @@
 require 'spec_helper'
 
 describe Turbolog do
-  # it 'Create App' do
-  #   pending # no code yet
-  # end
-  # let (:gemdata) {
-  # 	{ 
-  # 	}
-  # }
-  # describe 'Step 1 – Add Gems to your Gemfile' do
-  #       # gem 'devise'
-  #       # gem 'mongo', '~> 2.2'
-  #       # gem 'bson', '~> 4.0'
-  #       # gem 'mongoid', github: 'mongodb/mongoid'
-  #       # gem 'nokogiri' # use for jinda/doc
-  #       # gem 'haml', git: 'https://github.com/haml/haml'
-  #       # gem 'haml-rails'
-  #       # gem 'bcrypt'
-  #       # gem 'omniauth-identity'
-  #       # gem 'omniauth-facebook'
-  #       # gem 'dotenv-rails'
-  #   it 'returns a hash of the passed data' do
-  #     gem 'devise'
-  #     #require 'devise'
-  #     expect(require 'devise').not_to be_nil
 
-  #   end
+  describe 'Step 1 – Add Gems to your Gemfile' do
+        # gem 'devise'
+        # gem 'mongo', '~> 2.2'
+        # gem 'bson', '~> 4.0'
+        # gem 'mongoid', github: 'mongodb/mongoid'
+        # gem 'nokogiri'
+        # gem 'haml', git: 'https://github.com/haml/haml'
+        # gem 'haml-rails'
+        # gem 'bcrypt'
+        # gem 'omniauth-identity'
+        # gem 'omniauth-facebook'
+        # gem 'dotenv-rails'
+    it 'require \'devise\' returns a hash of the passed data' do
+      gem 'devise'
+      #require 'devise'
+      expect(require 'devise').not_to be_nil
+    end
 
+    it 'require \'mongo\', \'~> 2.2\' returns a hash of the passed data' do
+      gem 'mongo', '~> 2.2'
+      expect(require 'mongo').not_to be_nil
+    end
+
+    it 'require \gem \'bson\', \'~> 4.0\' returns a hash of the passed data' do
+      gem 'bson', '~> 4.0'
+      expect(require 'bson').not_to be_nil
+    end
+
+    it 'require mongoid\', github: \'mongodb/mongoid returns a hash of the passed data' do
+      gem 'mongoid', github: 'mongodb/mongoid'
+      expect(require 'mongoid').not_to be_nil
+    end
+
+    it 'require gem \'nokogiri\' returns a hash of the passed data' do
+      gem 'nokogiri'
+      expect(require 'nokogiri').not_to be_nil
+    end
+
+    it 'require gem \'haml\', git: \'https://github.com/haml/haml\' returns a hash of the passed data' do
+      gem 'haml', git: 'https://github.com/haml/haml'
+      expect(require 'haml').not_to be_nil
+    end
+
+    it 'require gem \'haml-rails\' returns a hash of the passed data' do
+      gem 'haml-rails'
+      expect(require 'haml-rails').not_to be_nil
+    end
+
+    it 'require gem \'bcrypt\' returns a hash of the passed data' do
+      gem 'bcrypt'
+      expect(require 'bcrypt').not_to be_nil
+    end
+
+    it 'require gem \'omniauth-identity\' returns a hash of the passed data' do
+      gem 'omniauth-identity'
+      expect(require 'omniauth-identity').not_to be_nil
+    end
+
+    it 'require gem \'omniauth-facebook\' returns a hash of the passed data' do
+      gem 'omniauth-facebook'
+      expect(require 'omniauth-facebook').not_to be_nil
+    end
+
+    it 'require gem \'dotenv-rails\' returns a hash of the passed data' do
+      gem 'dotenv-rails'
+      expect(require 'dotenv-rails').not_to be_nil
+    end
+
+end
   #   it 'All about gems' do
   #     pending
   #   end

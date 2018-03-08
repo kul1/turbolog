@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry", "~> 0"
   spec.add_development_dependency "pry-remote", "~> 0"
   spec.add_development_dependency "pry-nav", "~> 0"
-  #spec.add_development_dependency "coveralls"
+  spec.add_development_dependency "haml", ">= 5.0.4"
+  spec.add_development_dependency "haml-rails","~> 0"
 
 end
