@@ -40,7 +40,7 @@ module Turbolog
 
       def backup_files
         puts Color.blue(" ...................Backup Filess....................\n")
-        inside("app/controllers") {(File.file? "Users/omniauth_callbacks_controller.rb") ? (run "mv omniauth_callbacks_controller.rb omniauth_callbacks_controller.rb.bak") : (puts "No omniauth_callbacks_controller.rb")}
+        inside("app/controllers") {(File.file? "users/omniauth_callbacks_controller.rb") ? (run "mv omniauth_callbacks_controller.rb omniauth_callbacks_controller.rb.bak") : (puts "No omniauth_callbacks_controller.rb")}
         inside("config/initializers") {(File.file? "devise.rb") ? (run "mv devise.rb devise.rb.bak") : (puts "No devise.rb")}
         inside("app/models") {(File.file? "user.rb") ? (run "mv user.rb user.rb.bak") : (puts "No user.rb")}
         inside("app/helpers") {(File.file? "application_helper.rb") ? (run "mv application_helper.rb application_helper.rb.bak") : (puts "No application_helper.rb")}
