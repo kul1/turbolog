@@ -31,11 +31,13 @@ module Turbolog
         puts Color.blue("....................rails g devise User.................\n")
         run "rails generate devise User"
         gsub_file 'config/initializers/devise.rb',/# config.secret_key/,'config.secret_key'
+        gsub_file 'config/initializers/devise.rb',/config.sign_out_via = :delete/,'config.sign_out_via = :get'
       end
 
       desc "Create Initial Sample Controller"
         puts Color.blue(".............Create Welcome Initial Controller..........\n")
       def create_welcome
+
         run "rails g scaffold welcome greeting:text"
         #copy_file "welcomes_controller_spec.rb","spec/controllers"
         #copy_file "welcomes_spec.rb","spec/models"
@@ -130,7 +132,9 @@ module Turbolog
         puts "\n"
         puts Color.blue("________________________________________________________\n")
         puts Color.blue("                 Finished Step 3/3\n")
+        puts Color.red("       HOT FIX: PLEASE REMOVE DIRECTORY \"spec\"  \n")
         puts Color.blue("________________________________________________________\n")
+
       end
     end
   end
