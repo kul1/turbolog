@@ -4,8 +4,8 @@ Turbolog is a gem to setup devise, omniauth and facebook authentication.
 
 For the following configuration:
 
-.Rails 5.1.4, 5.2.0.rc1
-.Ruby 2.4.1, 2.5.0
+.Rails 5.1.4, 5.2.0.rc1, 6.0.0
+.Ruby 2.4.1, 2.5.0, 2.6.3
 .Devise
 .Mongoid
 .Omniauth_facebook
@@ -53,8 +53,10 @@ FACEBOOK_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 1. Create new rails app
 
-    $ rails new sample -B -O -T
+    $ rails new sample -BOTJ
 2. Follow Installation 3 steps above
+3. Hot fix: Please remove folder "spec"
+    $ rm -r spec
 
 Other command:
 
